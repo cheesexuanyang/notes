@@ -1,4 +1,4 @@
-const Note = require('../models/Note');
+const Note = require('../models/notes.js');
 
 class NoteService {
   // Get all notes for a user with pagination
@@ -31,6 +31,19 @@ class NoteService {
       }
     };
   }
+
+  async getNoteById(userId, noteId) {
+  const note = await Note.findOne({ 
+    _id: noteId, 
+    user: userId 
+  });
+  
+  if (!note) {
+    throw new Error('Note not found');
+  }
+  
+  return note;
+}
   
   // Create a new note
   async createNote(userId, noteData) {
@@ -70,5 +83,7 @@ class NoteService {
     return note;
   }
 }
+
+
 
 module.exports = new NoteService();
