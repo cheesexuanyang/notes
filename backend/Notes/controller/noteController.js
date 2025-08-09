@@ -1,4 +1,4 @@
-const noteService = require('backend/notes/services/services.js');
+const noteService = require('../services/noteservices');
 
 // Get all notes
 const getNotes = async (req, res) => {
@@ -41,11 +41,13 @@ const getNote = async (req, res) => {
 // Create note
 const createNote = async (req, res) => {
   try {
-    const note = await noteService.createNote(req.userId, req.body);
-    res.status(201).json({
-      success: true,
-      data: note
-    });
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ 
+        success: false, 
+        errors: errors.array() 
+      });
+    }
   } catch (error) {
     res.status(400).json({ 
       success: false, 

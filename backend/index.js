@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const connectDB = require('./config/db');
+const connectDB = require('./configs/db');
 const { errorHandler } = require('./utils/errorHandler');
 
 // Load env vars
@@ -20,8 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // API routes
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/notes', require('./routes/notes'));
+app.use('/api/auth', require('./authentication/routes/routesauth'));
+app.use('/api/notes', require('./notes/routes/routenotes'));
 
 // Health check
 app.get('/api/health', (req, res) => {

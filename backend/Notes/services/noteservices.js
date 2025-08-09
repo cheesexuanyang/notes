@@ -1,4 +1,4 @@
-const Note = require('../models/notes.js');
+const Note = require('../models/modelnote');
 
 class NoteService {
   // Get all notes for a user with pagination
