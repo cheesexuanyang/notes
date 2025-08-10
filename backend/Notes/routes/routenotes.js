@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
-const noteController = require('../controllers/noteController');
+const noteController = require('../controller/noteController');
 const authMiddleware = require('../../authentication/middleware/auth');
 
 // All routes require authentication

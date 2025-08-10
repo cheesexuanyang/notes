@@ -48,6 +48,12 @@ const createNote = async (req, res) => {
         errors: errors.array() 
       });
     }
+    
+    const note = await noteService.createNote(req.userId, req.body);
+    res.status(201).json({
+      success: true,
+      data: note
+    });
   } catch (error) {
     res.status(400).json({ 
       success: false, 
