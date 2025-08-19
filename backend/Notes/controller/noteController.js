@@ -1,4 +1,5 @@
 const noteService = require('../services/noteservices');
+const { validationResult } = require('express-validator'); // ADD THIS IMPORT
 
 // Get all notes
 const getNotes = async (req, res) => {
